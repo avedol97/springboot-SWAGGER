@@ -1,5 +1,7 @@
 package pl.krystian.swagger;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.Getter;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,12 +17,12 @@ public class StudentApi {
 
 
     public StudentApi() {
-        this.studentList=new ArrayList<>();
-//        this.studentList = Arrays.asList(new Student(1,"Krystian","Swagger"));
+//        this.studentList=new ArrayList<>();
+      this.studentList = Arrays.asList(new Student(1,"Krystian","Swagger"));
     }
-
+    @ApiOperation(value = "Find students by id",notes="provide information about student by id")
     @GetMapping("/{id}")
-    public Student getStudents(@PathVariable int id){
+    public Student getStudents(@ApiParam(value = "unique id of student",example = "1") @PathVariable int id){
         return studentList.stream()
                 .filter(student -> student.getId()==id).findFirst().get();
     }

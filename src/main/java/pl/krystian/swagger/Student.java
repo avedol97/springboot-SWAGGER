@@ -1,6 +1,8 @@
 package pl.krystian.swagger;
 
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 @Data
@@ -8,7 +10,9 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ApiModel("Personal data of Student")
 public class Student {
+    @ApiModelProperty("unique id of studemt")
     private int id;
     private String name;
     private String surname;
